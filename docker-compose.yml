@@ -1,0 +1,41 @@
+version: "3"
+
+volumes:
+  laravel_db:
+
+networks:
+  laravel:
+
+services:
+  nginx:
+    build: docker/nginx
+    cap_drop: [all]
+    cap_add: [chown, setgid, setuid, dac_override, net_bind_service]
+    volumes:
+      - ./:/var/www/laravel-6:cached
+    ports:
+      - 8001:80
+    networks:
+      - laravel
+  php:
+    build: docker/php
+    cap_drop: [all]
+    cap_add: [chown, setgid, setuid, dac_override]
+    environment:
+      - DATABASE_URL=mysql://root:root@db:3306/project_db
+    volumes:
+      - ./:/var/www/laravel-6:cached
+    networks:
+      - laravel
+  db:
+    image: mysql:8.0
+    cap_drop: [all]
+    cap_add: [chown, setgid, setuid, dac_override]
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - laravel_db:/var/lib/mysql:cached
+    ports:
+      - 3311:3306
+    networks:
+      - laravel
