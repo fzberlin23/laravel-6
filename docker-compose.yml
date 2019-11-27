@@ -22,13 +22,13 @@ services:
     cap_drop: [all]
     cap_add: [chown, setgid, setuid, dac_override]
     environment:
-      - DATABASE_URL=mysql://root:root@db:3306/project_db
+      - DATABASE_URL=mysql://root:root@db:3306/laravel
     volumes:
       - ./:/var/www/laravel-6:cached
     networks:
       - laravel
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     cap_drop: [all]
     cap_add: [chown, setgid, setuid, dac_override]
     environment:
