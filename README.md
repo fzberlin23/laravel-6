@@ -17,7 +17,8 @@ git + docker + docker-compose
 ### Installing
 
 ```
-git clone git@github.com:fzberlin23/laravel-6.git
+git clone git@github.com:fzberlin23/laravel-6.git 
+docker-compose up --build
 docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm composer install
 docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm artisan migrate
 ```
