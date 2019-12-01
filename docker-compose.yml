@@ -35,6 +35,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - laravel_db:/var/lib/mysql:cached
+      - ./docker/db/data:/docker-entrypoint-initdb.d
     ports:
       - 3311:3306
     networks:

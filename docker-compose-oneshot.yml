@@ -8,3 +8,16 @@ services:
     entrypoint: composer
     volumes:
       - ./laravel:/var/www/laravel-6/laravel:cached
+  artisan:
+    image: laravel-6_php:latest
+    cap_drop: [all]
+    environment:
+      - DATABASE_URL=mysql://root:root@db:3306/laravel
+    working_dir: /var/www/laravel-6/laravel
+    entrypoint: php artisan
+    links:
+      - "db"
+    volumes:
+      - ./laravel:/var/www/laravel-6/laravel:cached
+    networks:
+      - laravel
