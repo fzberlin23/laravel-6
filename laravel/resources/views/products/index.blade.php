@@ -13,14 +13,14 @@
 
     <table border="1">
         <tr>
-            <th>#</th>
+            <th>Id</th>
             <th>Titel</th>
             <th>Beschreibung</th>
             <th>Aktion</th>
         </tr>
         @foreach ($products as $product)
             <tr>
-                <td>{{ ++$i }}</td>
+                <td>{{ $product->id }}</td>
                 <td>{{ $product->title }}</td>
                 <td>{{ $product->description }}</td>
                 <td>
