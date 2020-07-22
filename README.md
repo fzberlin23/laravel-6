@@ -23,6 +23,12 @@ docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm comp
 docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm artisan migrate
 ```
 
+### Updating composer packages
+
+```
+docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm composer update
+```
+
 ### Run the application
 
 ```
